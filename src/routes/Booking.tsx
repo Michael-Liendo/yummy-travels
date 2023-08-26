@@ -5,6 +5,7 @@ import TravelCard from "../components/TravelCard";
 import { AppLayout } from "../layout";
 import { useBooking } from "../hooks";
 import { HeaderComponent } from "../components";
+import { useApp } from "../store/app";
 
 export default function Booking() {
   const skeleton = new Array(10).fill(0).map((i) => (
@@ -36,6 +37,10 @@ export default function Booking() {
   ));
 
   const booking = useBooking();
+
+  const {searchData} = useApp()
+  console.log(searchData)
+
   return (
     <AppLayout>
       <HeaderComponent />
