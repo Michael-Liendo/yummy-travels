@@ -29,10 +29,9 @@ export default function TravelCard() {
     <Link to={"/booking/details"}>
       <article
         className="flex flex-col shadow-md bg-white rounded-lg 
-        max-w-full p-5  transition duration-300 ease-in-out
-        hover:shadow-lg  hover:bg-gray-100
-        active:scale-95  cursor-pointer
-        "
+        max-w-full p-5 transition duration-300 ease-in-out
+        hover:shadow-lg hover:bg-gray-100
+        active:scale-95 group"
       >
         <main className="flex flex-row gap-2 text-primary">
           <p className="font-bold">
@@ -45,12 +44,15 @@ export default function TravelCard() {
 
           <div
             style={{
-              margin: "10px 0 10px",
+              margin: "10px 0 20px",
               lineHeight: "0.3em",
             }}
             className="w-[25%] border-b-[0.1em] border-primary text-center"
           >
-            <span className="bg-white px-1 ">
+            <span
+              className="bg-white px-1 group-hover:bg-gray-100 
+              transition duration-300 ease-in-out"
+            >
               {`${difference.hours}h ${difference.minutes}m`}
             </span>
           </div>
