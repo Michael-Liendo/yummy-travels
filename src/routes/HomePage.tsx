@@ -55,7 +55,7 @@ export default function App() {
           />
         </div>
         <div className="flex justify-between space-x-4 my-5">
-          <div>
+          <div className="flex-1">
             <div className="mb-2 block">
               <Label htmlFor="date" value="Fecha de viaje" />
             </div>
@@ -70,7 +70,7 @@ export default function App() {
               type="date"
             />
           </div>
-          <div>
+          <div className="flex-1">
             <div className="mb-2 block">
               <Label htmlFor="passengers" value="Pasajeros" />
             </div>
