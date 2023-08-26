@@ -1,6 +1,5 @@
 import { Card } from "flowbite-react";
 import React from "react";
-import { dateToString } from "../helpers";
 
 export default function TravelCard() {
   const data = {
