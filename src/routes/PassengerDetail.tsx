@@ -37,7 +37,8 @@ export default function PassengerDetail() {
   return (
     <div className="p-5 bg-gray-300/50 h-screen flex items-center justify-center">
       <form
-        className="bg-white p-5 rounded-lg flex flex-col gap-4 w-full max-w-4xl"
+        className="bg-white p-5 rounded-lg flex flex-col 
+        gap-4 w-full max-w-4xl"
         onSubmit={handleSubmit}
       >
         <fieldset id="email">
