@@ -1,4 +1,3 @@
-import { Card } from "flowbite-react";
 import React from "react";
 
 export default function TravelCard() {
@@ -45,11 +44,11 @@ export default function TravelCard() {
         <div
           style={{
             margin: "10px 0 10px",
-            lineHeight: " 0.3em",
+            lineHeight: "0.3em",
           }}
-          className="w-[25%] border-b-[0.1em] border-primary"
+          className="w-[25%] border-b-[0.1em] border-primary text-center"
         >
-          <span className="bg-white px-1">
+          <span className="bg-white px-1 ">
             {`${difference.hours}h ${difference.minutes}m`}
           </span>
         </div>
