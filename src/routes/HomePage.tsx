@@ -16,7 +16,7 @@ export default function App() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     navigate(
-      `/booking?${travelForm.current_address}&${travelForm.address}&${travelForm.travel_date}&${travelForm.passengers}`
+      `/booking?${travelForm.current_address}&origin=${travelForm.address}&destination${travelForm.travel_date}&passengers${travelForm.passengers}`
     );
     // TODO save in local storage, if by exist the data, set by default value into de input, remember last search
     console.log(travelForm);

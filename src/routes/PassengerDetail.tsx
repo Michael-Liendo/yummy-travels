@@ -6,11 +6,13 @@ import { Button } from "flowbite-react";
 import { HeaderComponent } from "../components";
 
 export default function PassengerDetail() {
+  // const navigate = useNavigate();
   return (
     <AppLayout>
       <HeaderComponent />
       <PassengerForm />
       <PassengerForm />
+
       <div className="px-5 mb-10">
         <Button
           theme={{
