@@ -2,8 +2,10 @@ import { Label, TextInput, Button } from "flowbite-react";
 import { FormEvent, useState } from "react";
 import { AppLayout } from "../layout";
 import imageTravel from "../assets/undraw_Traveling_yhxq.png";
+import { useNavigate } from "react-router-dom";
 
 export default function App() {
+  const navigate = useNavigate();
   const [travelForm, setTravelForm] = useState<{
     current_address: string;
     address: string;
@@ -13,7 +15,10 @@ export default function App() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-
+    navigate(
+      `/booking?${travelForm.current_address}&${travelForm.address}&${travelForm.travel_date}&${travelForm.passengers}`
+    );
+    // TODO save in local storage, if by exist the data, set by default value into de input, remember last search
     console.log(travelForm);
   }
 
@@ -81,6 +86,7 @@ export default function App() {
               <Label htmlFor="passengers" value="Pasajeros" />
             </div>
             <TextInput
+              value={travelForm.passengers}
               name="passengers"
               id="passengers"
               placeholder="1"
