@@ -1,8 +1,11 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
-export const appStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-}))
-
+export const useCart = create(
+  persist(
+    (set, get) => ({
+      app: [],
+    }),
+    { name: 'app-storage' },
+  ),
+);
