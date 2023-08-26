@@ -1,7 +1,6 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function TravelCard() {
-  const navigate = useNavigate();
   const data = {
     initialHour: new Date(),
     finalHour: new Date(),

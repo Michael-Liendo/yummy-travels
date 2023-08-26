@@ -3,7 +3,6 @@ import { AiFillCar } from "react-icons/ai";
 import { BsAirplaneFill, BsBusFrontFill } from "react-icons/bs";
 import TravelCard from "../components/TravelCard";
 import { AppLayout } from "../layout";
-import { useBooking } from "../hooks";
 import { HeaderComponent } from "../components";
 
 export default function Booking() {
@@ -35,7 +34,6 @@ export default function Booking() {
     </div>
   ));
 
-  const booking = useBooking();
   return (
     <AppLayout>
       <HeaderComponent />
@@ -72,7 +70,7 @@ export default function Booking() {
             <TravelCard />
           </section>
         </Tabs.Item>
-        
+
         <Tabs.Item icon={AiFillCar} title="Carro">
           <section className="flex flex-col gap-4">
             {skeleton}
