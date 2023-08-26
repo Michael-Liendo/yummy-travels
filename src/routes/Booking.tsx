@@ -1,9 +1,9 @@
 import { Tabs } from "flowbite-react";
 import { AiFillCar } from "react-icons/ai";
 import { BsAirplaneFill, BsBusFrontFill } from "react-icons/bs";
-import TravelCard from "./TravelCard";
+import TravelCard from "../components/TravelCard";
 
-export default function TabsWithIcons() {
+export default function Booking() {
   return (
     <Tabs.Group
       aria-label="Travel modes"
