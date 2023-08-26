@@ -3,6 +3,8 @@ import { AiFillCar } from "react-icons/ai";
 import { BsAirplaneFill, BsBusFrontFill } from "react-icons/bs";
 import TravelCard from "../components/TravelCard";
 import { AppLayout } from "../layout";
+import { useBooking } from "../hooks";
+import { HeaderComponent } from "../components";
 
 export default function Booking() {
   const skeleton = new Array(10).fill(0).map((i) => (
@@ -33,8 +35,10 @@ export default function Booking() {
     </div>
   ));
 
+  const booking = useBooking();
   return (
     <AppLayout>
+      <HeaderComponent />
       <Tabs.Group
         aria-label="Travel modes"
         style="underline"
@@ -53,6 +57,7 @@ export default function Booking() {
             },
           },
         }}
+        className="mt-2"
       >
         <Tabs.Item active icon={BsBusFrontFill} title="Autobus">
           <section className="flex flex-col gap-4">

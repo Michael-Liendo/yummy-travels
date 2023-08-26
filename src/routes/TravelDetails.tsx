@@ -1,14 +1,16 @@
 import { Button, Card } from "flowbite-react";
 import { AppLayout } from "../layout";
 import { AiOutlineLeft, AiFillCheckCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 export const TravelDetails = () => {
+  const navigate = useNavigate();
   return (
     <AppLayout>
       <div className="bg-primary h-[15vh] rounded">
         <div className="flex items-center  p-5 gap-5">
           <span className="cursor-pointer">
-            <Button color="primary">
+            <Button color="primary" onClick={() => navigate(-1)}>
               <AiOutlineLeft className="text-white" />
             </Button>
           </span>
@@ -76,6 +78,7 @@ export const TravelDetails = () => {
           </div>
           <div className="mt-10 flex justify-center">
             <button
+              onClick={() => navigate("/passenger-detail")}
               type="button"
               className="text-white w-full bg-primary  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
             >

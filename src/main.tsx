@@ -5,18 +5,16 @@ import { TravelDetails } from "./routes";
 import "./index.css";
 import HomePage from "./routes/HomePage.tsx";
 import Booking from "./routes/Booking.tsx";
-import PassengerDetail from './routes/PassengerDetail.tsx';
-
+import PassengerDetail from "./routes/PassengerDetail.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/details" element={<TravelDetails />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/booking" element={<Booking />} />
+      <Route path="/booking/details" element={<TravelDetails />} />
       {/* FIXME - Meterle el id al viaje */}
       <Route path="/passenger-detail" element={<PassengerDetail />} />
-
     </Routes>
   </BrowserRouter>
 );
