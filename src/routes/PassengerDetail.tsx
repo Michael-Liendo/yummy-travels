@@ -3,13 +3,14 @@ import "../PhoneInputs.css";
 import { AppLayout } from "../layout";
 import { PassengerForm } from "../components/PassengerForm";
 import { Button } from "flowbite-react";
+import { HeaderComponent } from "../components";
 
 export default function PassengerDetail() {
   return (
     <AppLayout>
+      <HeaderComponent />
       <PassengerForm />
       <PassengerForm />
-
       <div className="px-5 mb-10">
         <Button
           theme={{

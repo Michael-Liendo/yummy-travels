@@ -1,32 +1,16 @@
-import { Button, Tabs } from "flowbite-react";
-import { AiFillCar, AiOutlineLeft } from "react-icons/ai";
+import { Tabs } from "flowbite-react";
+import { AiFillCar } from "react-icons/ai";
 import { BsAirplaneFill, BsBusFrontFill } from "react-icons/bs";
 import TravelCard from "../components/TravelCard";
 import { AppLayout } from "../layout";
 import { useBooking } from "../hooks";
-import { useNavigate } from "react-router-dom";
+import { HeaderComponent } from "../components";
 
 export default function Booking() {
   const booking = useBooking();
-  const navigate = useNavigate();
   return (
     <AppLayout>
-      <div className="bg-primary rounded">
-        <div className="flex items-center  p-5 gap-5">
-          <span className="cursor-pointer">
-            <Button color="primary" onClick={() => navigate(-1)}>
-              <AiOutlineLeft className="text-white" />
-            </Button>
-          </span>
-          <div>
-            <h2 className="text-white">Barcelona - Paris</h2>
-            <p className="text-white text-xs">
-              Sabado 26 de Agosto, 1 pasajero
-            </p>
-          </div>
-          <div></div>
-        </div>
-      </div>
+      <HeaderComponent />
       <Tabs.Group
         aria-label="Travel modes"
         style="underline"

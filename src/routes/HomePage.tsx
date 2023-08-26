@@ -91,7 +91,6 @@ export default function App() {
               id="passengers"
               placeholder="1"
               required
-              value={travelForm.passengers}
               onChange={(e) => {
                 handleInputChange(e);
               }}
