@@ -6,31 +6,31 @@ import { AppLayout } from "../layout";
 
 export default function Booking() {
   const skeleton = new Array(10).fill(0).map((i) => (
-      <div
+    <div
       key={i}
-        role="status"
-        className="flex flex-col shadow-md bg-white rounded-lg 
+      role="status"
+      className="flex flex-col shadow-md bg-white rounded-lg 
           max-w-full p-5 animate-pulse"
-      >
-        <div className="w-full ">
-          <div
-            className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 
+    >
+      <div className="w-full ">
+        <div
+          className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 
             max-w-[450px] mb-8"
-          ></div>
+        ></div>
 
-          <main className="flex gap-2 mb-5">
-            <div className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px]"></div>
-            <div className="ml-auto h-2  w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px]"></div>
-          </main>
+        <main className="flex gap-2 mb-5">
+          <div className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px]"></div>
+          <div className="ml-auto h-2  w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px]"></div>
+        </main>
 
-          <footer className="mt-4 flex ">
-            <div className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px]"></div>
-            <div className="ml-auto h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[50px]"></div>
-          </footer>
-        </div>
-
-        <span className="sr-only">Loading...</span>
+        <footer className="mt-4 flex ">
+          <div className="h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[300px]"></div>
+          <div className="ml-auto h-2 w-full bg-gray-200 rounded-full dark:bg-gray-700 max-w-[50px]"></div>
+        </footer>
       </div>
+
+      <span className="sr-only">Loading...</span>
+    </div>
   ));
 
   return (
@@ -60,27 +60,19 @@ export default function Booking() {
             <TravelCard />
           </section>
         </Tabs.Item>
+
         <Tabs.Item icon={BsAirplaneFill} title="Avion">
-          <p>
-            This is
-            <span className="font-medium text-gray-800 dark:text-white">
-              Dashboard tab's associated content
-            </span>
-            . Clicking another tab will toggle the visibility of this one for
-            the next. The tab JavaScript swaps classes to control the content
-            visibility and styling.
-          </p>
+          <section className="flex flex-col gap-4">
+            {skeleton}
+            <TravelCard />
+          </section>
         </Tabs.Item>
+        
         <Tabs.Item icon={AiFillCar} title="Carro">
-          <p>
-            This is
-            <span className="font-medium text-gray-800 dark:text-white">
-              Settings tab's associated content
-            </span>
-            . Clicking another tab will toggle the visibility of this one for
-            the next. The tab JavaScript swaps classes to control the content
-            visibility and styling.
-          </p>
+          <section className="flex flex-col gap-4">
+            {skeleton}
+            <TravelCard />
+          </section>
         </Tabs.Item>
       </Tabs.Group>
     </AppLayout>
