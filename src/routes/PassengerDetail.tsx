@@ -31,14 +31,13 @@ export default function PassengerDetail() {
   };
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-
+    e.preventDefault();
   }
 
   return (
-    <div className="p-5 bg-gray-300/50 h-screen">
+    <div className="p-5 bg-gray-300/50 h-screen flex items-center justify-center">
       <form
-        className="bg-white p-5 rounded-lg flex flex-col gap-4"
+        className="bg-white p-5 rounded-lg flex flex-col gap-4 w-full max-w-4xl"
         onSubmit={handleSubmit}
       >
         <fieldset id="email">

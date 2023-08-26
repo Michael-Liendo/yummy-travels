@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function TravelCard() {
   const data = {
     initialHour: new Date(),
@@ -27,7 +25,7 @@ export default function TravelCard() {
   return (
     <article
       className="flex flex-col shadow-md bg-white rounded-lg 
-        max-w-md p-5  transition duration-300 ease-in-out
+        max-w-full p-5  transition duration-300 ease-in-out
         hover:shadow-lg  hover:bg-gray-100
         active:scale-95 
         "
