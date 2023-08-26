@@ -1,4 +1,4 @@
-import { Label, TextInput } from "flowbite-react";
+import { Label, TextInput, Button } from "flowbite-react";
 import { FormEvent, useState } from "react";
 import { AppLayout } from "../layout";
 import imageTravel from "../assets/undraw_Traveling_yhxq.png";
@@ -9,7 +9,7 @@ export default function App() {
     address: string;
     travel_date: string;
     passengers: number;
-  }>({ current_address: "", address: "", travel_date: "", passengers: 0 });
+  }>({ current_address: "", address: "", travel_date: "", passengers: 1 });
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -85,6 +85,7 @@ export default function App() {
               id="passengers"
               placeholder="1"
               required
+              value={travelForm.passengers}
               onChange={(e) => {
                 handleInputChange(e);
               }}
@@ -93,12 +94,19 @@ export default function App() {
           </div>
         </div>
         <div className="flex justify-center">
-          <button
+          <Button
             type="submit"
-            className="text-white bg-primary focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 w-full"
+            theme={{
+              color: {
+                primary:
+                  "bg-primary text-white hover:bg-primary-strong focus:bg-primary-strong ring-primary",
+              },
+            }}
+            color="primary"
+            className="w-full"
           >
             Buscar viaje
-          </button>
+          </Button>
         </div>
       </form>
     </AppLayout>
