@@ -7,10 +7,12 @@ import { HeaderComponent } from "../components";
 import { useSearchParams } from "react-router-dom";
 import { searchData as searchDataType } from "./HomePage";
 import { useEffect, useState } from "react";
+import { useTrips } from "../hooks/useTrips";
 
 export default function Booking() {
   const [searchParams] = useSearchParams();
   const [loading, setLoading] = useState(true);
+  const { getAll, getBusesTrips, getCarsTrips, getairplanesTrips } = useTrips();
 
   const searchData: searchDataType = {
     current_address: searchParams.get("current_address") || "",
@@ -23,6 +25,17 @@ export default function Booking() {
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
+  }, []);
+
+  useEffect(() => {
+    getAll({
+      availableSeats: searchData.passengers,
+      city: searchData.current_address.trim(),
+      destination: searchData.address.trim(),
+      date: searchData.travel_date,
+    }).then((data) => {
+      console.log(data);
+    });
   }, []);
 
   const skeletons = {
@@ -109,48 +122,6 @@ export default function Booking() {
     )),
   };
 
-  const trips: { buses?: Trip_Avaible[], airplanes?: Trip_Avaible[], cars?: Trip_Avaible[] } = {
-    buses: [{
-      id: 1,
-      type: "flight",
-      price: 200,
-      description: "Round-trip flight to Paris",
-      city: "New York",
-      destination: "Paris",
-      date: "2022-05-01",
-      time: "10:00",
-      arrivalDate: "2022-05-01",
-      arrivalHour: "16:00",
-      availableSeats: 5,
-    },
-    {
-      id: 2,
-      type: "hotel",
-      price: 100,
-      description: "3-night stay at a 4-star hotel",
-      city: "Paris",
-      destination: "Paris",
-      date: "2022-05-01",
-      time: "16:00",
-      arrivalDate: "2022-05-04",
-      arrivalHour: "12:00",
-      availableSeats: 11,
-    }],
-    airplanes: [{
-      id: 3,
-      type: "activity",
-      price: 50,
-      description: "Eiffel Tower tour",
-      city: "Paris",
-      destination: "Paris",
-      date: "2022-05-02",
-      time: "10:00",
-      arrivalDate: "2022-05-02",
-      arrivalHour: "12:00",
-      availableSeats: 2,
-    },]
-  }
-
   return (
     <AppLayout>
       <HeaderComponent />
@@ -178,7 +149,9 @@ export default function Booking() {
           <section className="flex flex-col gap-4">
             {loading
               ? skeletons.bus
-              : trips.buses?.map((trip) => <TravelCard key={trip.id} trip={trip} />)}
+              : getBusesTrips()?.map((trip) => (
+                  <TravelCard key={trip._id} trip={trip} />
+                ))}
           </section>
         </Tabs.Item>
 
@@ -186,7 +159,9 @@ export default function Booking() {
           <section className="flex flex-col gap-4">
             {loading
               ? skeletons.plane
-              : trips.airplanes?.map((trip) => <TravelCard key={trip.id} trip={trip} />)}
+              : getairplanesTrips()?.map((trip) => (
+                  <TravelCard key={trip._id} trip={trip} />
+                ))}
           </section>
         </Tabs.Item>
 
@@ -194,7 +169,9 @@ export default function Booking() {
           <section className="flex flex-col gap-4">
             {loading
               ? skeletons.car
-              : trips.cars?.map((trip) => <TravelCard key={trip.id} trip={trip} />) || <strong>No hay disponibilidad</strong>}
+              : getCarsTrips()?.map((trip) => (
+                  <TravelCard key={trip._id} trip={trip} />
+                )) || <strong>No hay disponibilidad</strong>}
           </section>
         </Tabs.Item>
       </Tabs.Group>

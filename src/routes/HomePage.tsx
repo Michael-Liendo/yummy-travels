@@ -14,10 +14,13 @@ export interface searchData {
 
 export default function App() {
   const navigate = useNavigate();
+  const tomorrowDate = new Date().setDate(new Date().getDate() + 1);
+  const tomorrow = new Date(tomorrowDate).toISOString().split("T")[0];
+
   const [travelForm, setTravelForm] = useState<searchData>({
     current_address: "",
     address: "",
-    travel_date: "",
+    travel_date: tomorrow,
     passengers: 1,
   });
   const { setSearchData } = useApp();
@@ -84,8 +87,8 @@ export default function App() {
               name="travel_date"
               id="date"
               min="2023-08-26"
-              placeholder="20/09/2023"
               required
+              value={travelForm.travel_date}
               onChange={(e) => {
                 handleInputChange(e);
               }}

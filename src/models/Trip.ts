@@ -1,5 +1,5 @@
 interface Trip {
-  id: number;
+  _id: string;
   type: string;
   price: number;
   description: string;

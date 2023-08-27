@@ -5,13 +5,23 @@ interface Props {
 }
 
 export default function TravelCard({ trip }: Props) {
-  const initialDate = new Date(`${trip.date}T${trip.time}:00.000Z`);
   const finalDate = new Date(`${trip.arrivalDate}T${trip.arrivalHour}:00.000Z`);
 
-  const diff = finalDate.getTime() - initialDate.getTime();
-  const difference = {
-    hours: Math.floor(diff / (1000 * 60 * 60)),
-    minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+  console.log({ date: trip.date, time: trip.time });
+  console.log({ arrivalDate: trip.arrivalDate, arrivalHour: trip.arrivalHour });
+
+  // const diff = finalDate.getTime() - initialDate.getTime();
+  // const difference = {
+  //   hours: Math.floor(diff / (1000 * 60 * 60)),
+  //   minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+  // };
+
+  const calculateDiff = () => {
+    const diff =
+      Number(trip.arrivalHour.split(":")[0].replace(":", "")) -
+      Number(trip.time.split(":")[0].replace(":", ""));
+
+    return diff < 12 ? diff + " am" : diff + " pm";
   };
 
   const avalabilityClass =
@@ -22,23 +32,20 @@ export default function TravelCard({ trip }: Props) {
       : "bg-red-500";
 
   return (
-    <Link to={`/booking/details/${trip.id}`}>
+    <Link to={`/booking/details/${trip._id}`}>
       <article
         className="flex flex-col shadow-md bg-white rounded-lg 
         max-w-full p-5 transition duration-300 ease-in-out
         hover:shadow-lg hover:bg-gray-100
         active:scale-95 group"
       >
-        <main className="flex flex-row gap-2 text-primary">
+        <main className="flex flex-row gap-2 text-primary justify-between">
           <p className="font-bold">
-            Salida:{" "}
-            {initialDate.toLocaleString("en-US", {
-              hour12: true,
-              hour: "numeric",
-            })}
+            Salida: {new Date(trip.date).toLocaleDateString("es-VE")} a las{" "}
+            {Number(trip.time) < 12 ? trip.time + " am" : trip.time + " pm"}
           </p>
 
-          <div
+          {/* <div
             style={{
               margin: "10px 0 20px",
               lineHeight: "0.3em",
@@ -49,13 +56,13 @@ export default function TravelCard({ trip }: Props) {
               className="bg-white px-1 group-hover:bg-gray-100 
               transition duration-300 ease-in-out"
             >
-              {`${difference.hours}h ${difference.minutes}m`}
+              {calculateDiff()}
             </span>
-          </div>
+          </div> */}
 
           <p className="font-bold">
             Llegada:{" "}
-            {finalDate.toLocaleString("en-US", {
+            {finalDate.toLocaleString("es-VE", {
               hour12: true,
               hour: "numeric",
             })}
@@ -69,7 +76,7 @@ export default function TravelCard({ trip }: Props) {
 
           <p className="basis-1/2 text-left overflow-hidden text-ellipsis">
             {trip.description}
-            </p>
+          </p>
         </section>
 
         <footer className="mt-4 flex ">
@@ -83,7 +90,7 @@ export default function TravelCard({ trip }: Props) {
             </p>
           </div>
 
-          <span className="ml-auto text-primary">$ {trip.price}</span>
+          <span className="ml-auto text-primary"> Precio ${trip.price}</span>
         </footer>
       </article>
     </Link>
