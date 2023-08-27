@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/booking" element={<Booking />} />
-      <Route path="/booking/details" element={<TravelDetails />} />
+      <Route path="/booking/details/:id" element={<TravelDetails />} />
       {/* FIXME - Meterle el id al viaje */}
       <Route path="/passenger-detail" element={<PassengerDetail />} />
     </Routes>
