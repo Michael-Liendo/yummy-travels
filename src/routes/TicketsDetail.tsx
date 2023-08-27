@@ -60,7 +60,7 @@ export default function Tickets() {
               <FaArrowRight /> {ticket?.destination}
             </span>
           </div>
-          <div className="text-3xl self-end">{icons[ticket?.type]}</div>
+          <div className="text-3xl self-end">{icons[ticket?.type || 0]}</div>
         </div>
       </header>
 
@@ -96,7 +96,7 @@ export default function Tickets() {
           </div>
           <div className="text-sm flex gap-2 ml-5 mt-2 items-center justify-between mb-4 text-black/50">
             <div className="flex items-center gap-2">
-              <div className="">{icons[ticket?.type]}</div>
+              <div className="">{icons[ticket?.type || 1]}</div>
               <div>Flota Express</div>
             </div>
             <div className="text-sm text-black/50">02:00</div>

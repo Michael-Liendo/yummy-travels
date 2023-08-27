@@ -16,13 +16,13 @@ export default function TravelCard({ trip }: Props) {
   //   minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
   // };
 
-  const calculateDiff = () => {
-    const diff =
-      Number(trip.arrivalHour.split(":")[0].replace(":", "")) -
-      Number(trip.time.split(":")[0].replace(":", ""));
+  // const calculateDiff = () => {
+  //   const diff =
+  //     Number(trip.arrivalHour.split(":")[0].replace(":", "")) -
+  //     Number(trip.time.split(":")[0].replace(":", ""));
 
-    return diff < 12 ? diff + " am" : diff + " pm";
-  };
+  //   return diff < 12 ? diff + " am" : diff + " pm";
+  // };
 
   const avalabilityClass =
     trip.availableSeats > 4

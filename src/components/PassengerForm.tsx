@@ -2,10 +2,10 @@ import React from "react";
 import { Label, TextInput } from "flowbite-react";
 
 export const PassengerForm = ({ passengerNumber }: { passengerNumber: number }) => {
-  const [formValues, setFormValues] = React.useState({
-    name: "",
-    id: ""
-  });
+  // const [formValues, setFormValues] = React.useState({
+  //   name: "",
+  //   id: ""
+  // });
 
 
   const formTheme = {

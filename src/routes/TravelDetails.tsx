@@ -1,10 +1,9 @@
-import { Button, Card } from "flowbite-react";
+import { Card } from "flowbite-react";
 import { AppLayout } from "../layout";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { HeaderComponent } from "../components";
-import { searchData } from "./HomePage";
 
 export const TravelDetails = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ export const TravelDetails = () => {
 
   useEffect(() => {
     setTrip({
-      id: 1,
+      _id: '1',
       type: "flight",
       price: 200,
       description: "Round-trip flight to Paris",
