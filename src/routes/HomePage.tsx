@@ -1,7 +1,7 @@
 import { Label, TextInput, Button } from "flowbite-react";
 import { FormEvent, useState } from "react";
 import { AppLayout } from "../layout";
-import imageTravel from "../assets/undraw_Traveling_yhxq.png";
+import imageTravel from "../assets/traveling.svg";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "../store/app";
 
@@ -46,7 +46,7 @@ export default function App() {
         </div>
       </div>
       <form onSubmit={handleSubmit} className="px-5 mt-5 mx-auto">
-        <h1 className="text-2xl">¡Viaja ahora!</h1>
+        <h1 className="text-3xl text-primary font-bold text-center">¡Viaja ahora!</h1>
 
         <div className="my-5">
           <div className="mb-2 block">

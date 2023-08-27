@@ -32,7 +32,7 @@ export default function TravelCard({ trip }: Props) {
       : "bg-red-500";
 
   return (
-    <Link to={`/booking/details/${trip._id}`}>
+    <Link to={`/booking/${trip._id}`}>
       <article
         className="flex flex-col shadow-md bg-white rounded-lg 
         max-w-full p-5 transition duration-300 ease-in-out
