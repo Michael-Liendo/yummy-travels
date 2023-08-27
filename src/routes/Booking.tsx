@@ -109,8 +109,8 @@ export default function Booking() {
     )),
   };
 
-  const trips: Trip_Avaible[] = [
-    {
+  const trips: { buses?: Trip_Avaible[], airplanes?: Trip_Avaible[], cars?: Trip_Avaible[] } = {
+    buses: [{
       id: 1,
       type: "flight",
       price: 200,
@@ -135,8 +135,8 @@ export default function Booking() {
       arrivalDate: "2022-05-04",
       arrivalHour: "12:00",
       availableSeats: 11,
-    },
-    {
+    }],
+    airplanes: [{
       id: 3,
       type: "activity",
       price: 50,
@@ -148,8 +148,8 @@ export default function Booking() {
       arrivalDate: "2022-05-02",
       arrivalHour: "12:00",
       availableSeats: 2,
-    },
-  ];
+    },]
+  }
 
   return (
     <AppLayout>
@@ -178,7 +178,7 @@ export default function Booking() {
           <section className="flex flex-col gap-4">
             {loading
               ? skeletons.bus
-              : trips.map((trip) => <TravelCard key={trip.id} trip={trip} />)}
+              : trips.buses?.map((trip) => <TravelCard key={trip.id} trip={trip} />)}
           </section>
         </Tabs.Item>
 
@@ -186,7 +186,7 @@ export default function Booking() {
           <section className="flex flex-col gap-4">
             {loading
               ? skeletons.plane
-              : trips.map((trip) => <TravelCard key={trip.id} trip={trip} />)}
+              : trips.airplanes?.map((trip) => <TravelCard key={trip.id} trip={trip} />)}
           </section>
         </Tabs.Item>
 
@@ -194,7 +194,7 @@ export default function Booking() {
           <section className="flex flex-col gap-4">
             {loading
               ? skeletons.car
-              : trips.map((trip) => <TravelCard key={trip.id} trip={trip} />)}
+              : trips.cars?.map((trip) => <TravelCard key={trip.id} trip={trip} />) || <strong>No hay disponibilidad</strong>}
           </section>
         </Tabs.Item>
       </Tabs.Group>
