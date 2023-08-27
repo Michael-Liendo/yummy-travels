@@ -1,34 +1,29 @@
 import { Card } from "flowbite-react";
 import { AppLayout } from "../layout";
 import { AiFillCheckCircle } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { HeaderComponent } from "../components";
+import { apiFetch } from "../api/config";
+import { useApp } from "../store/app";
 
 export const TravelDetails = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [trip, setTrip] = useState<Trip_Avaible | null>(null);
 
-  const initialDate = new Date(`${trip?.date}T${trip?.time}:00.000Z`);
-  const finalDate = new Date(
-    `${trip?.arrivalDate}T${trip?.arrivalHour}:00.000Z`
-  );
+  const { searchData } = useApp();
 
   useEffect(() => {
-    setTrip({
-      _id: '1',
-      type: "flight",
-      price: 200,
-      description: "Round-trip flight to Paris",
-      city: "New York",
-      destination: "Paris",
-      date: "2022-05-01",
-      time: "10:00",
-      arrivalDate: "2022-05-01",
-      arrivalHour: "16:00",
-      availableSeats: 5,
+    apiFetch.get(`${"/trips"}/${id}`).then((response) => {
+      setTrip(response.data);
     });
   }, []);
+
+  const formatDate = (date: string) => {
+    const [year, month, day] = date.split("-");
+    return `${day}/${month}/${year}`;
+  };
 
   return (
     <AppLayout>
@@ -45,22 +40,9 @@ export const TravelDetails = () => {
                 </div>
 
                 <p className="text-sm">
-                  {initialDate
-                    .toLocaleDateString("es-ES", {
-                      weekday: "long",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                      hour12: true,
-                    })
-                    .replace("a. m.", "AM")
-                    .replace("p. m.", "PM")
-                    .split(" ")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ")}
+                  {formatDate(trip?.date)} a las {trip.arrivalHour}hrs
                 </p>
-                <p className="text-sm">{trip.city}</p>
+                <p className="text-sm capitalize">{trip.city}</p>
               </aside>
 
               <div className="w-[2px] bg-primary max-h-full h-24"></div>
@@ -72,22 +54,9 @@ export const TravelDetails = () => {
                 </div>
 
                 <p className="text-sm">
-                  {finalDate
-                    .toLocaleDateString("es-ES", {
-                      weekday: "long",
-                      month: "long",
-                      day: "numeric",
-                      hour: "numeric",
-                      minute: "numeric",
-                      hour12: true,
-                    })
-                    .replace("a. m.", "AM")
-                    .replace("p. m.", "PM")
-                    .split(" ")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ")}
+                  {formatDate(trip?.arrivalDate)} a las {trip.arrivalHour}hrs
                 </p>
-                <p className="text-sm">{trip.destination}</p>
+                <p className="text-sm capitalize">{trip.destination}</p>
               </aside>
             </main>
           </Card>
@@ -103,7 +72,7 @@ export const TravelDetails = () => {
                 <div className="text-sm">
                   Tickets{" "}
                   <span className="text-xs">
-                    ({trip.availableSeats}{" "}
+                    ({searchData.passengers}{" "}
                     {trip.availableSeats > 1 ? "pasajeros" : "pasajero"})
                   </span>
                 </div>
@@ -115,7 +84,9 @@ export const TravelDetails = () => {
                   <span className="font-bold">Total</span>{" "}
                   <span className="text-xs">(Impuestos incluidos)</span>
                 </div>
-                <div className="font-bold">${trip.price}</div>
+                <div className="font-bold">
+                  ${trip.price * searchData.passengers}
+                </div>
               </div>
             </div>
           </Card>

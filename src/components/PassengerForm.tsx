@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Label, TextInput } from "flowbite-react";
+import { apiFetch } from "../api/config";
 
-export const PassengerForm = ({ passengerNumber }: { passengerNumber: number }) => {
-  // const [formValues, setFormValues] = React.useState({
-  //   name: "",
-  //   id: ""
-  // });
-
-
+export const PassengerForm = ({
+  passengerNumber,
+}: {
+  passengerNumber: number;
+}) => {
   const formTheme = {
     field: {
       input: {
@@ -18,8 +17,19 @@ export const PassengerForm = ({ passengerNumber }: { passengerNumber: number }) 
     },
   };
 
+  const [name, setName] = useState("");
+  const [identificationNumber, setIdentificationNumber] = useState("");
+
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    apiFetch
+      .post("/passengers", {
+        name: name,
+        identificationNumber,
+      })
+      .then((theme) => {
+        console.log(theme);
+      });
   }
   return (
     <form
@@ -27,7 +37,6 @@ export const PassengerForm = ({ passengerNumber }: { passengerNumber: number }) 
     gap-4 w-full max-w-4xl border-b-2 border-b-slate-400 border-opacity-20"
       onSubmit={handleSubmit}
     >
-
       <h2>Pasajero {passengerNumber}</h2>
       <div className="flex gap-2 mb-2">
         <fieldset id="name">
@@ -38,10 +47,10 @@ export const PassengerForm = ({ passengerNumber }: { passengerNumber: number }) 
             required
             type="text"
             theme={formTheme}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </fieldset>
-
-
 
         <fieldset id="id" className="flex-1">
           <Label htmlFor="id" value="Identificación" />
@@ -50,12 +59,12 @@ export const PassengerForm = ({ passengerNumber }: { passengerNumber: number }) 
             placeholder="v00.000.000"
             required
             type="text"
+            value={identificationNumber}
+            onChange={(e) => setIdentificationNumber(e.target.value)}
             theme={formTheme}
           />
         </fieldset>
-
       </div>
-
     </form>
   );
 };
