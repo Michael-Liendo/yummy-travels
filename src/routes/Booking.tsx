@@ -160,7 +160,7 @@ export default function Booking() {
         theme={{
           tablist: {
             tabitem: {
-              base: "flex items-center justify-center p-4 rounded-t-lg text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500 focus:ring-[3px] focus:ring-primary focus:outline-none",
+              base: "flex items-center justify-center p-4 flex-1 rounded-t-lg text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500 focus:outline-none",
               styles: {
                 underline: {
                   active: {
@@ -194,7 +194,7 @@ export default function Booking() {
           <section className="flex flex-col gap-4">
             {loading
               ? skeletons.car
-              : trips.cars?.map((trip) => <TravelCard key={trip.id} trip={trip} />) || <strong>No hay disponibilidad</strong>}
+              : trips.cars?.map((trip) => <TravelCard key={trip.id} trip={trip} />) || <div className="text-center mt-5 text-black/40"><strong>No hay disponibilidad</strong></div>}
           </section>
         </Tabs.Item>
       </Tabs.Group>
