@@ -50,10 +50,11 @@ export default function Checkout() {
                 </Label>
                 <TextInput
                   icon={MdOutlineEmail}
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
                   placeholder="your.email@gmail.com"
+                  required
                 />
               </div>
               <div className="mb-4">
@@ -66,6 +67,7 @@ export default function Checkout() {
                   id="card-holder"
                   name="card-holder"
                   placeholder="Joe Doe"
+                  required
                 />
               </div>
               <div className="mb-4">
@@ -77,6 +79,7 @@ export default function Checkout() {
                   type="text"
                   id="card-id"
                   name="card-id"
+                  required
                   placeholder="00.000.000"
                 />
               </div>
@@ -149,6 +152,7 @@ export default function Checkout() {
                         id="card-no"
                         name="card-no"
                         placeholder="xxxx-xxxx-xxxx-xxxx"
+                        required
                       />
 
                       <TextInput
@@ -156,11 +160,12 @@ export default function Checkout() {
                         name="credit-expiry"
                         className="w-20"
                         placeholder="MM/YY"
+                        required
                       />
                       <TextInput
                         type="text"
                         className="w-20"
-                        name="credit-cvc"
+                        name="credit-cvc" required
                         placeholder="CVC"
                       />
                     </div>
