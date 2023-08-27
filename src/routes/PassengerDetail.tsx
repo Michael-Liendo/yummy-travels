@@ -11,7 +11,6 @@ export default function PassengerDetail() {
     <AppLayout>
       <HeaderComponent />
       <PassengerForm />
-      <PassengerForm />
 
       <div className="px-5 mb-10">
         <Button
