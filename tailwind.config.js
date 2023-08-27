@@ -11,7 +11,7 @@ export default {
         sans: ["Inter", "sans-serif", "system-ui"],
       },
       colors: {
-        primary: "#6c2bd9",
+        primary: "#993dc5",
         "primary-strong": "#6B5FCB",
         secondary: "#06A77D",
         tertiary: "#F9FAFB",
