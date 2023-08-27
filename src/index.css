@@ -7,3 +7,7 @@
     @apply bg-[#fafafa];
   }
 }
+
+.PhoneInputInput { 
+  @apply text-sm bg-[#f9fafb];
+}
