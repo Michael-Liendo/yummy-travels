@@ -83,6 +83,7 @@ export default function App() {
             <TextInput
               name="travel_date"
               id="date"
+              min="2023-08-26"
               placeholder="20/09/2023"
               required
               onChange={(e) => {
@@ -100,6 +101,8 @@ export default function App() {
               name="passengers"
               id="passengers"
               placeholder="1"
+              min={1}
+              max={12}
               required
               onChange={(e) => {
                 handleInputChange(e);
