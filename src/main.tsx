@@ -17,8 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Route path="/home" element={<HomePage />} />
       <Route path="/booking" element={<Booking />} />
       <Route path="/booking/details/:id" element={<TravelDetails />} />
-      {/* FIXME - Meterle el id al viaje */}
-      <Route path="/passenger-detail" element={<PassengerDetail />} />
+      <Route path="/passenger-detail/:id" element={<PassengerDetail />} />
       <Route path='/checkout' element={<Checkout />} />
     </Routes>
   </BrowserRouter>

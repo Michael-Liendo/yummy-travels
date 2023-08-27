@@ -153,7 +153,7 @@ export default function Booking() {
 
   return (
     <AppLayout>
-      <HeaderComponent travelData={searchData} />
+      <HeaderComponent />
       <Tabs.Group
         aria-label="Travel modes"
         style="underline"

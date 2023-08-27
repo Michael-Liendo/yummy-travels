@@ -2,10 +2,12 @@ import { Button } from "flowbite-react";
 import { AiOutlineLeft } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { searchData } from "../routes/HomePage";
+import { useApp } from "../store/app";
 
-export const HeaderComponent = ({ travelData: { address = "", current_address = '', passengers = 0, travel_date = "00-00-00" } }: { travelData: searchData }) => {
+export const HeaderComponent = () => {
   const navigate = useNavigate();
 
+  const { searchData } = useApp();
 
   return (
     <div className="bg-primary rounded">
@@ -16,12 +18,18 @@ export const HeaderComponent = ({ travelData: { address = "", current_address = 
           </Button>
         </span>
         <div>
-          <h2 className="text-white">{current_address}</h2>
+          <h2 className="text-white">{searchData.current_address}</h2>
           <p className="text-white text-xs">
-            {address}, {passengers}{" "}
-            {passengers > 1 ? "pasajeros" : "pasajero"}
+            {searchData.address}, {searchData.passengers}{" "}
+            {searchData.passengers > 1 ? "pasajeros" : "pasajero"}
           </p>
-          <time className="text-white">{new Date(travel_date).toLocaleString('es', { month: 'long', year: "2-digit", 'day': "2-digit" })}</time>
+          <time className="text-white">
+            {new Date(searchData.travel_date).toLocaleString("es", {
+              month: "long",
+              year: "2-digit",
+              day: "2-digit",
+            })}
+          </time>
         </div>
         <div></div>
       </div>
