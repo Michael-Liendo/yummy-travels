@@ -103,7 +103,7 @@ export const TravelDetails = () => {
               <div className="flex items-center justify-between border-b pb-4">
                 <div className="text-sm">
                   Tickets <span className="text-xs">({trip.availableSeats}{" "}
-                  {trip.availableSeats > 1 ? "pasajeros" : "pasajero"})</span>
+                    {trip.availableSeats > 1 ? "pasajeros" : "pasajero"})</span>
                 </div>
                 <span>${trip.price}</span>
               </div>
@@ -119,7 +119,7 @@ export const TravelDetails = () => {
           </Card>
           <div className="mt-10 flex justify-center">
             <button
-              onClick={() => navigate(`/passenger-detail/${trip.id}`)}
+              onClick={() => navigate(`/passenger/${trip.id}`)}
               type="button"
               className="text-white w-full bg-primary  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
             >

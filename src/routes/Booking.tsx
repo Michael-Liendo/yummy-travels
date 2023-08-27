@@ -21,11 +21,6 @@ export default function Booking() {
     travel_date: searchParams.get("travel_date") || "",
   };
 
-  console.log(searchData);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
 
   useEffect(() => {
     getAll({
@@ -33,9 +28,12 @@ export default function Booking() {
       city: searchData.current_address.trim(),
       destination: searchData.address.trim(),
       date: searchData.travel_date,
-    }).then((data) => {
-      console.log(data);
+    }).then(() => {
+
+      setTimeout(() => setLoading(false), 1000);
+
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const skeletons = {
@@ -150,8 +148,8 @@ export default function Booking() {
             {loading
               ? skeletons.bus
               : getBusesTrips()?.map((trip) => (
-                  <TravelCard key={trip._id} trip={trip} />
-                ))}
+                <TravelCard key={trip._id} trip={trip} />
+              )) || <strong className="text-center">No hay disponibilidad </strong>}
           </section>
         </Tabs.Item>
 
@@ -160,8 +158,8 @@ export default function Booking() {
             {loading
               ? skeletons.plane
               : getairplanesTrips()?.map((trip) => (
-                  <TravelCard key={trip._id} trip={trip} />
-                ))}
+                <TravelCard key={trip._id} trip={trip} />
+              )) || <strong className="text-center">No hay disponibilidad</strong>}
           </section>
         </Tabs.Item>
 
@@ -170,8 +168,8 @@ export default function Booking() {
             {loading
               ? skeletons.car
               : getCarsTrips()?.map((trip) => (
-                  <TravelCard key={trip._id} trip={trip} />
-                )) || <strong>No hay disponibilidad</strong>}
+                <TravelCard key={trip._id} trip={trip} />
+              )) || <strong className="text-center">No hay disponibilidad</strong>}
           </section>
         </Tabs.Item>
       </Tabs.Group>

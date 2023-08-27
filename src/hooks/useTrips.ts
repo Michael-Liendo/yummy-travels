@@ -27,7 +27,7 @@ type TripQuery = {
 };
 const useTrips = () => {
   const [trips, setTrips] = useState<Trip[]>([]);
-  const getAll = async ({ availableSeats, city, destination }: TripQuery) => {
+  const getAll = async ({ availableSeats, city, destination, date }: TripQuery) => {
     const response = await apiFetch("/trips", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -36,25 +36,27 @@ const useTrips = () => {
         availableSeats,
         city,
         destination,
+        date
       },
-    });
+    });    
     setTrips(response.data.results);
+    return response.data.results
   };
 
   const getBusesTrips = () => {
-    return trips.filter((trip: any) => trip.type === "bus");
+    return  trips.length > 0 ? trips.filter((trip: Trip) => trip.type === "bus") : undefined;
   };
 
   const getairplanesTrips = () => {
-    return trips.filter((trip: any) => trip.type === "flight");
+    return  trips.length > 0 ?  trips.filter((trip: Trip) => trip.type === "flight") : undefined
   };
 
   const getCarsTrips = () => {
-    return trips.filter((trip: any) => trip.type === "ship");
+    return trips.length > 0 ? trips.filter((trip: Trip) => trip.type === "ship") : undefined;
   };
 
-  const calculeMinorPrice = (items: any) => {
-    return items.reduce((acc: any, curr: any) => {
+  const calculeMinorPrice = (items: Trip[]) => {
+    return items.reduce((acc: Trip, curr: Trip) => {
       return curr.price < acc.price ? curr : acc;
     });
   };

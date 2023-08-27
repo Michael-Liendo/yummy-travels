@@ -70,12 +70,12 @@ export default function TravelCard({ trip }: Props) {
         </main>
 
         <section className="flex flex-row gap-4 mt-2">
-          <p className="basis-1/2 text-left overflow-hidden text-ellipsis">
-            {trip.city}
+          <p className="basis-1/2 text-left overflow-hidden text-ellipsis capitalize">
+            De: {trip.city}
           </p>
 
-          <p className="basis-1/2 text-left overflow-hidden text-ellipsis">
-            {trip.description}
+          <p className="basis-1/2 text-left overflow-hidden text-ellipsis capitalize">
+            A: {trip.destination}
           </p>
         </section>
 
@@ -90,7 +90,7 @@ export default function TravelCard({ trip }: Props) {
             </p>
           </div>
 
-          <span className="ml-auto text-primary"> Precio ${trip.price}</span>
+          <span className="ml-auto text-primary"> Precio <strong>${trip.price}</strong></span>
         </footer>
       </article>
     </Link>
