@@ -20,6 +20,7 @@ export const PassengerForm = ({
   const [name, setName] = useState("");
   const [identificationNumber, setIdentificationNumber] = useState("");
 
+  // @ts-ignore
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     apiFetch
