@@ -10,3 +10,7 @@ interface Trip {
   arrivalDate: string;
   arrivalHour: string;
 }
+
+interface Trip_Avaible extends Trip {
+  availableSeats: number;
+}

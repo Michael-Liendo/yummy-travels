@@ -13,10 +13,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<HomePage />} />
+      <Route path="/home" element={<HomePage />} />
       <Route path="/booking" element={<Booking />} />
-      <Route path="/booking/details" element={<TravelDetails />} />
-      {/* FIXME - Meterle el id al viaje */}
-      <Route path="/passenger-detail" element={<PassengerDetail />} />
+      <Route path="/booking/details/:id" element={<TravelDetails />} />
+      <Route path="/passenger-detail/:id" element={<PassengerDetail />} />
       <Route path='/checkout' element={<Checkout />} />
     </Routes>
   </BrowserRouter>

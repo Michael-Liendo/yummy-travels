@@ -76,6 +76,7 @@ export const PassengerForm = () => {
         placeholder="Enter phone number"
         className="rounded-lg p-4 border-2  outline-none h-12"
         value={formValues.phone}
+        defaultCountry="VE"
         onChange={(phone) =>
           setFormValues({ ...formValues, phone: phone ?? "" })
         }

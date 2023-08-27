@@ -1,31 +1,28 @@
 import { Link } from "react-router-dom";
 
-export default function TravelCard() {
-  const data = {
-    initialHour: new Date(),
-    finalHour: new Date(),
-    availableSeats: 10,
-  };
-  data.initialHour.setHours(8);
-  data.initialHour.setMinutes(0);
-  data.finalHour.setHours(12);
-  data.finalHour.setMinutes(30);
+interface Props {
+  trip: Trip_Avaible;
+}
 
-  const diff = data.finalHour.getTime() - data.initialHour.getTime();
+export default function TravelCard({ trip }: Props) {
+  const initialDate = new Date(`${trip.date}T${trip.time}:00.000Z`);
+  const finalDate = new Date(`${trip.arrivalDate}T${trip.arrivalHour}:00.000Z`);
+
+  const diff = finalDate.getTime() - initialDate.getTime();
   const difference = {
     hours: Math.floor(diff / (1000 * 60 * 60)),
     minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
   };
 
   const avalabilityClass =
-    data.availableSeats > 5
-      ? data.availableSeats > 8
+    trip.availableSeats > 4
+      ? trip.availableSeats > 8
         ? "bg-green-500"
         : "bg-yellow-400"
       : "bg-red-500";
 
   return (
-    <Link to={"/booking/details"}>
+    <Link to={`/booking/details/${trip.id}`}>
       <article
         className="flex flex-col shadow-md bg-white rounded-lg 
         max-w-full p-5 transition duration-300 ease-in-out
@@ -35,7 +32,7 @@ export default function TravelCard() {
         <main className="flex flex-row gap-2 text-primary">
           <p className="font-bold">
             Salida:{" "}
-            {data.initialHour.toLocaleString("en-US", {
+            {initialDate.toLocaleString("en-US", {
               hour12: true,
               hour: "numeric",
             })}
@@ -58,7 +55,7 @@ export default function TravelCard() {
 
           <p className="font-bold">
             Llegada:{" "}
-            {data.finalHour.toLocaleString("en-US", {
+            {finalDate.toLocaleString("en-US", {
               hour12: true,
               hour: "numeric",
             })}
@@ -66,9 +63,13 @@ export default function TravelCard() {
         </main>
 
         <section className="flex flex-row gap-4 mt-2">
-          <p className="basis-1/2 text-left">Paris supeeeeeeeeeeer largo</p>
+          <p className="basis-1/2 text-left overflow-hidden text-ellipsis">
+            {trip.city}
+          </p>
 
-          <p className="basis-1/2 text-left">Madrid supeeeeeeeeeeer largo</p>
+          <p className="basis-1/2 text-left overflow-hidden text-ellipsis">
+            {trip.description}
+            </p>
         </section>
 
         <footer className="mt-4 flex ">
@@ -78,13 +79,11 @@ export default function TravelCard() {
               <span className="font-bold text-primary">
                 Puestos disponibles:{" "}
               </span>
-              {data.availableSeats}
+              {trip.availableSeats}
             </p>
           </div>
 
-          <span className="ml-auto text-primary">
-            $ {data.availableSeats * 100}
-          </span>
+          <span className="ml-auto text-primary">$ {trip.price}</span>
         </footer>
       </article>
     </Link>
