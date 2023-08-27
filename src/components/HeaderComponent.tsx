@@ -1,7 +1,6 @@
 import { Button } from "flowbite-react";
 import { AiOutlineLeft } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { searchData } from "../routes/HomePage";
 import { useApp } from "../store/app";
 
 export const HeaderComponent = () => {
@@ -10,11 +9,11 @@ export const HeaderComponent = () => {
   const { searchData } = useApp();
 
   return (
-    <div className="bg-primary rounded">
+    <div className="bg-primary rounded-t-3xl">
       <div className="flex items-center  p-5 gap-5">
         <span className="cursor-pointer">
           <Button color="primary" onClick={() => navigate(-1)}>
-            <AiOutlineLeft className="text-white" />
+            <AiOutlineLeft className="text-white text-xl" />
           </Button>
         </span>
         <div>
