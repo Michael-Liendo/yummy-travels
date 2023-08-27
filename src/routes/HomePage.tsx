@@ -118,7 +118,7 @@ export default function App() {
               },
             }}
             color="primary"
-            className="w-full"
+            className="w-full mb-5"
           >
             Buscar viaje
           </Button>
