@@ -4,27 +4,36 @@ import { AppLayout } from "../layout";
 import imageTravel from "../assets/undraw_Traveling_yhxq.png";
 import { useNavigate } from "react-router-dom";
 
+export interface searchData {
+  current_address: string;
+  address: string;
+  travel_date: string;
+  passengers: number;
+}
+
 export default function App() {
   const navigate = useNavigate();
-  const [travelForm, setTravelForm] = useState<{
-    current_address: string;
-    address: string;
-    travel_date: string;
-    passengers: number;
-  }>({ current_address: "", address: "", travel_date: "", passengers: 1 });
+  const [travelForm, setTravelForm] = useState<searchData>({
+    current_address: "",
+    address: "",
+    travel_date: "",
+    passengers: 1,
+  });
+  // const { setSearchData } = useApp();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    navigate(
-      `/booking?${travelForm.current_address}&origin=${travelForm.address}&destination${travelForm.travel_date}&passengers${travelForm.passengers}`
-    );
     // TODO save in local storage, if by exist the data, set by default value into de input, remember last search
-    console.log(travelForm);
+    // setSearchData(travelForm);
+    navigate(
+      `/booking?current_address=${travelForm.current_address}&address=${travelForm.address}&travel_date=${travelForm.travel_date}&passengers=${travelForm.passengers}`
+    );
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTravelForm({ ...travelForm, [e.target.name]: e.target.value });
   };
+
   return (
     <AppLayout>
       <div className="w-[300px] m-auto">

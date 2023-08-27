@@ -4,8 +4,29 @@ import { BsAirplaneFill, BsBusFrontFill } from "react-icons/bs";
 import TravelCard from "../components/TravelCard";
 import { AppLayout } from "../layout";
 import { HeaderComponent } from "../components";
+import { useSearchParams } from 'react-router-dom'
+import { searchData as searchDataType } from "./HomePage";
+import { useEffect, useState } from "react";
 
 export default function Booking() {
+  const [searchParams] = useSearchParams()
+  const [loading, setLoading] = useState(false)
+
+  const searchData: searchDataType = {
+    current_address: searchParams.get('current_address') || '',
+    address: searchParams.get('address') || '',
+    passengers: Number(searchParams.get('passengers')) || 0,
+    travel_date: searchParams.get('travel_date') || ''
+  }
+
+  console.log(searchData);
+
+  useEffect(() => {
+    setLoading(true)
+  }, [])
+
+
+
   const skeleton = new Array(10).fill(0).map((i) => (
     <div
       key={i}
@@ -36,7 +57,7 @@ export default function Booking() {
 
   return (
     <AppLayout>
-      <HeaderComponent />
+      <HeaderComponent travelData={searchData} />
       <Tabs.Group
         aria-label="Travel modes"
         style="underline"
@@ -59,22 +80,22 @@ export default function Booking() {
       >
         <Tabs.Item active icon={BsBusFrontFill} title="Autobus">
           <section className="flex flex-col gap-4">
-            {skeleton}
-            <TravelCard />
+            {loading ? skeleton :
+              <TravelCard />}
           </section>
         </Tabs.Item>
 
         <Tabs.Item icon={BsAirplaneFill} title="Avion">
           <section className="flex flex-col gap-4">
-            {skeleton}
-            <TravelCard />
+            {loading ? skeleton :
+              <TravelCard />}
           </section>
         </Tabs.Item>
 
         <Tabs.Item icon={AiFillCar} title="Carro">
           <section className="flex flex-col gap-4">
-            {skeleton}
-            <TravelCard />
+            {loading ? skeleton :
+              <TravelCard />}
           </section>
         </Tabs.Item>
       </Tabs.Group>
