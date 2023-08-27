@@ -5,7 +5,6 @@ import HomePage from "./routes/HomePage.tsx";
 import Booking from "./routes/Booking.tsx";
 import PassengerDetail from "./routes/PassengerDetail.tsx";
 import ReactDOM from 'react-dom/client'
-import Home from './routes/Home.tsx';
 import Checkout from './routes/Checkout.tsx';
 
 
