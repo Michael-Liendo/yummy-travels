@@ -5,9 +5,17 @@ import { PassengerForm } from "../components/PassengerForm";
 import { Button } from "flowbite-react";
 import { HeaderComponent } from "../components";
 import { useApp } from "../store/app";
+import { FormEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function PassengerDetail() {
   const { searchData } = useApp();
+  const navigate = useNavigate();
+
+  function scheduleTrip(e: FormEvent) {
+    e.preventDefault()
+    navigate("/checkout")
+  }
 
   return (
     <AppLayout>
@@ -16,7 +24,7 @@ export default function PassengerDetail() {
       {Array.from({ length: searchData.passengers }, (_, i) => i + 1).map((number) => (<PassengerForm passengerNumber={number} />))}
 
 
-      <div className="px-5 mb-10">
+      <form className="px-5 mb-10" onSubmit={scheduleTrip}>
         <Button
           theme={{
             color: {
@@ -30,7 +38,7 @@ export default function PassengerDetail() {
         >
           Agendar viaje
         </Button>
-      </div>
+      </form>
     </AppLayout>
   );
 }
