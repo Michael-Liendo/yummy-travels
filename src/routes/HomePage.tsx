@@ -3,7 +3,6 @@ import { FormEvent, useState } from "react";
 import { AppLayout } from "../layout";
 import imageTravel from "../assets/undraw_Traveling_yhxq.png";
 import { useNavigate } from "react-router-dom";
-import { useApp } from "../store/app";
 
 export interface searchData {
   current_address: string;
@@ -20,21 +19,21 @@ export default function App() {
     travel_date: "",
     passengers: 1,
   });
-  const { setSearchData } = useApp();
+  // const { setSearchData } = useApp();
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     // TODO save in local storage, if by exist the data, set by default value into de input, remember last search
-    setSearchData(travelForm);
+    // setSearchData(travelForm);
     navigate(
-      `/booking?${travelForm.current_address}&origin=${travelForm.address}&destination${travelForm.travel_date}&passengers${travelForm.passengers}`
+      `/booking?current_address=${travelForm.current_address}&address=${travelForm.address}&travel_date=${travelForm.travel_date}&passengers=${travelForm.passengers}`
     );
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTravelForm({ ...travelForm, [e.target.name]: e.target.value });
   };
-  
+
   return (
     <AppLayout>
       <div className="w-[300px] m-auto">

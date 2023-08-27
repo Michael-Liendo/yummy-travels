@@ -7,18 +7,10 @@ interface appStore {
   setSearchData: (data: searchData) => void
 }
 
-export const useApp = create(
-  persist<appStore>(
+export const useCart = create(
+  persist(
     (set, get) => ({
-      searchData: {
-        current_address: '',
-        address: '',
-        travel_date: '',
-        passengers: 0,
-      },
-      setSearchData(data) {
-        set({ searchData: data });
-      },
+      app: [],
     }),
     { name: 'app-storage' },
   ),
