@@ -17,8 +17,8 @@ const NoTickets = () => (
 );
 
 const NoArchived = () => (
-  <section className="flex flex-col items-center">
-    <div className="text-5xl text-primary-strong">
+  <section className="flex flex-col items-center mt-20">
+    <div className="text-5xl text-primary">
       <MdAirplaneTicket />
     </div>
     <h2 className="text-2xl font-bold">No tienes viajes archivados</h2>
@@ -62,13 +62,15 @@ export default function Tickets() {
           <img src={electionImage} />
         </div>
       </div>
+
+      <h4 className="text-2xl text-center font-bold text-primary mb-10">Tus boletos</h4>
       <Tabs.Group
         aria-label="Tabs with underline"
         style="underline"
         theme={{
           tablist: {
             tabitem: {
-              base: "flex items-center justify-center p-4 rounded-t-lg text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500 focus:ring-[3px] focus:ring-primary focus:outline-none",
+              base: "flex items-center justify-center flex-1 p-4 rounded-t-lg text-sm font-medium first:ml-0 disabled:cursor-not-allowed disabled:text-gray-400 disabled:dark:text-gray-500 focus:outline-none",
               styles: {
                 underline: {
                   active: {
