@@ -10,6 +10,12 @@ export const HeaderComponent = () => {
   const navigate = useNavigate();
 
   const { searchData } = useApp();
+  console.log(searchData.travel_date);
+
+  const formatDate = () => {
+    const [year, month, day] = searchData.travel_date.split("-");
+    return `${day}/${month}/${year}`;
+  };
 
   return (
     <div className="bg-primary rounded-t-3xl">
@@ -35,13 +41,7 @@ export const HeaderComponent = () => {
           </div>
           <div className="flex items-center space-x-0.5">
             <MdOutlineDateRange className="text-white mr-2" />
-            <time className="text-white">
-              {new Date(searchData.travel_date).toLocaleString("es", {
-                month: "long",
-                year: "2-digit",
-                day: "2-digit",
-              })}
-            </time>
+            <div className="text-white">{formatDate()}</div>
           </div>
         </div>
         <div></div>
