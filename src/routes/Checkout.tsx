@@ -26,19 +26,13 @@ export default function Checkout() {
     <AppLayout>
       <div className=" grid lg:grid-cols-2">
         <div className="px-4 pt-8">
-          <div className="w-[300px] m-auto">
-            <div>
-              <img src={resumeSvg} />
-            </div>
-          </div>
+          <img className="w-[300px] m-auto" src={resumeSvg} />
           <p className="text-2xl font-bold text-primary text-center mt-10">
             Resumen del viaje
           </p>
 
-          <div className="mt-8 space-y-3 rounded-lg overflow-y-scroll max-h-96 border bg-white px-2 py-4 sm:px-6">
-            <div>
-              <h2>Boleto viaje - 2 personas - 22$</h2>
-            </div>
+          <div className="mt-8 space-y-3 rounded-lg  max-h-96 border bg-white px-2 py-4 sm:px-6">
+            <h2>Boleto viaje - 2 personas - 22$</h2>
           </div>
         </div>
 
@@ -95,7 +89,9 @@ export default function Checkout() {
                   className="flex max-w-md flex-col gap-4"
                   id="radio"
                 >
-                  <legend className="my-4 text-lg font-bold">Selecciona el método de pago</legend>
+                  <legend className="my-4 text-lg font-bold">
+                    Selecciona el método de pago
+                  </legend>
                   <div className="flex items-center gap-2">
                     <Radio
                       defaultChecked
