@@ -63,9 +63,13 @@ export default function TravelCard({ trip }: Props) {
         </main>
 
         <section className="flex flex-row gap-4 mt-2">
-          <p className="basis-1/2 text-left">Paris supeeeeeeeeeeer largo</p>
+          <p className="basis-1/2 text-left overflow-hidden text-ellipsis">
+            {trip.city}
+          </p>
 
-          <p className="basis-1/2 text-left">Madrid supeeeeeeeeeeer largo</p>
+          <p className="basis-1/2 text-left overflow-hidden text-ellipsis">
+            {trip.description}
+            </p>
         </section>
 
         <footer className="mt-4 flex ">
