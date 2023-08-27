@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif", "system-ui"],
+        sans: ["Montserrat", "sans-serif", "system-ui"],
       },
       colors: {
         primary: "#993dc5",
