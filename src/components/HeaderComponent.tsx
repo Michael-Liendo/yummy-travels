@@ -21,16 +21,17 @@ export const HeaderComponent = () => {
         </span>
         <div>
           <div className="flex items-center space-x-0.5">
-
             <FaLocationArrow color="white" className="mr-2" />
-            <h1 className="text-white text-lg">
+            <h1 className="text-white text-lg capitalize">
               {searchData.address}, {searchData.passengers}{" "}
               {searchData.passengers > 1 ? "pasajeros" : "pasajero"}
             </h1>
           </div>
           <div className="flex items-center space-x-0.5">
             <BiCurrentLocation color="white" className="mr-2" />
-            <h2 className="text-white">{searchData.current_address}</h2>
+            <h2 className="text-white capitalize">
+              {searchData.current_address}
+            </h2>
           </div>
           <div className="flex items-center space-x-0.5">
             <MdOutlineDateRange className="text-white mr-2" />

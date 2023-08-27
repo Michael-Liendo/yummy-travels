@@ -16,6 +16,7 @@ export default function App() {
   const navigate = useNavigate();
   const tomorrowDate = new Date().setDate(new Date().getDate() + 1);
   const tomorrow = new Date(tomorrowDate).toISOString().split("T")[0];
+  const today = new Date().toISOString().split("T")[0];
 
   const [travelForm, setTravelForm] = useState<searchData>({
     current_address: "",
@@ -29,8 +30,15 @@ export default function App() {
     e.preventDefault();
     // TODO save in local storage, if by exist the data, set by default value into de input, remember last search
     setSearchData(travelForm);
+    if (travelForm.travel_date === today) {
+      window.alert("No puedes reservar un viaje para hoy");
+
+      return;
+    }
     navigate(
-      `/booking?current_address=${travelForm.current_address}&address=${travelForm.address}&travel_date=${travelForm.travel_date}&passengers=${travelForm.passengers}`
+      `/booking?current_address=${travelForm.current_address.toLocaleLowerCase()}&address=${travelForm.address.toLocaleLowerCase()}&travel_date=${
+        travelForm.travel_date
+      }&passengers=${travelForm.passengers}`
     );
   }
 
@@ -46,7 +54,9 @@ export default function App() {
         </div>
       </div>
       <form onSubmit={handleSubmit} className="px-5 mt-5 mx-auto">
-        <h1 className="text-3xl text-primary font-bold text-center">¡Viaja ahora!</h1>
+        <h1 className="text-3xl text-primary font-bold text-center">
+          ¡Viaja ahora!
+        </h1>
 
         <div className="my-5">
           <div className="mb-2 block">
