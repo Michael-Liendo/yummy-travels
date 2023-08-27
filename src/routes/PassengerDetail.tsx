@@ -4,13 +4,17 @@ import { AppLayout } from "../layout";
 import { PassengerForm } from "../components/PassengerForm";
 import { Button } from "flowbite-react";
 import { HeaderComponent } from "../components";
+import { useApp } from "../store/app";
 
 export default function PassengerDetail() {
-  // const navigate = useNavigate();
+  const { searchData } = useApp();
+
   return (
     <AppLayout>
       <HeaderComponent />
-      <PassengerForm />
+
+      {Array.from({ length: searchData.passengers }, (_, i) => i + 1).map((number) => (<PassengerForm passengerNumber={number} />))}
+
 
       <div className="px-5 mb-10">
         <Button
