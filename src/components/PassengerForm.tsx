@@ -32,10 +32,9 @@ export const PassengerForm = ({
       });
   }
   return (
-    <form
+    <div
       className="bg-white p-5 rounded-lg flex flex-col 
     gap-4 w-full max-w-4xl border-b-2 border-b-slate-400 border-opacity-20"
-      onSubmit={handleSubmit}
     >
       <h2>Pasajero {passengerNumber}</h2>
       <div className="flex gap-2 mb-2">
@@ -65,6 +64,6 @@ export const PassengerForm = ({
           />
         </fieldset>
       </div>
-    </form>
+    </div>
   );
 };

@@ -3,9 +3,10 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineEmail } from "react-icons/md";
 import { AiOutlineCreditCard, AiOutlinePlusCircle } from "react-icons/ai";
 import { HiOutlineIdentification } from "react-icons/hi";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { AppLayout } from "../layout";
 import resumeSvg from "../assets/resume.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState<
@@ -15,10 +16,18 @@ export default function Checkout() {
 
   const [total, setTotal] = useState(2.88);
   const props = { openModal, setOpenModal };
+  const routes = useNavigate()
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function handleFieldSet(e: any) {
     setPaymentMethod(e?.target?.value);
+  }
+
+  function handleSubmit(event: FormEvent) {
+    event.preventDefault()
+    routes("/tickets")
+
+
   }
 
   // TODO!:
@@ -37,7 +46,7 @@ export default function Checkout() {
           </div>
         </div>
 
-        <div className="mt-5 pt-8 lg:mt-0">
+        <form onSubmit={(e) => { handleSubmit(e) }} className="mt-5 pt-8 lg:mt-0">
           <div className="bg-white px-4 py-8 mb-6">
             <p className="text-lg font-bold mb-2">Detalles de pago</p>
             <p className="text-gray-400 text-sm mb-6">
@@ -50,10 +59,11 @@ export default function Checkout() {
                 </Label>
                 <TextInput
                   icon={MdOutlineEmail}
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
                   placeholder="your.email@gmail.com"
+                  required
                 />
               </div>
               <div className="mb-4">
@@ -66,6 +76,7 @@ export default function Checkout() {
                   id="card-holder"
                   name="card-holder"
                   placeholder="Joe Doe"
+                  required
                 />
               </div>
               <div className="mb-4">
@@ -77,6 +88,7 @@ export default function Checkout() {
                   type="text"
                   id="card-id"
                   name="card-id"
+                  required
                   placeholder="00.000.000"
                 />
               </div>
@@ -149,6 +161,7 @@ export default function Checkout() {
                         id="card-no"
                         name="card-no"
                         placeholder="xxxx-xxxx-xxxx-xxxx"
+                        required
                       />
 
                       <TextInput
@@ -156,11 +169,12 @@ export default function Checkout() {
                         name="credit-expiry"
                         className="w-20"
                         placeholder="MM/YY"
+                        required
                       />
                       <TextInput
                         type="text"
                         className="w-20"
-                        name="credit-cvc"
+                        name="credit-cvc" required
                         placeholder="CVC"
                       />
                     </div>
@@ -193,11 +207,11 @@ export default function Checkout() {
             </div>
           </div>
           <div className="px-4 pb-8">
-            <Button color="purple" size="xl" className="w-full my-10">
+            <Button type="submit" color="purple" size="xl" className="w-full my-10">
               Reservar viaje
             </Button>
           </div>
-        </div>
+        </form>
       </div>
 
       <Modal

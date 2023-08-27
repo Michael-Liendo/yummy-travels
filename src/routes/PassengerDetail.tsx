@@ -21,18 +21,18 @@ export default function PassengerDetail() {
     <AppLayout>
       <HeaderComponent />
 
-      {Array.from({ length: searchData.passengers }, (_, i) => i + 1).map((number) => (<PassengerForm passengerNumber={number} />))}
-
-
       <form className="px-5 mb-10" onSubmit={scheduleTrip}>
+        {Array.from({ length: searchData.passengers }, (_, i) => i + 1).map((number) => (<PassengerForm passengerNumber={number} />))}
+
+
         <Button
+          type="submit"
           theme={{
             color: {
               primary:
                 "bg-primary text-white hover:bg-primary-strong focus:bg-primary-strong ring-primary w-full",
             },
           }}
-          type="submit"
           color="primary"
           className="mt-2"
         >
