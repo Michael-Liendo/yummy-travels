@@ -38,10 +38,10 @@ export const PassengerForm = () => {
       onSubmit={handleSubmit}
     >
       <fieldset id="email">
-        <Label htmlFor="email" value="Passenger email" />
+        <Label htmlFor="email" value="Email" />
         <TextInput
           id="email"
-          placeholder="Please, write your email"
+          placeholder="john@doe.com"
           required
           type="email"
           theme={formTheme}
@@ -50,10 +50,10 @@ export const PassengerForm = () => {
 
       <div className="flex gap-2 mb-2">
         <fieldset id="firstName" className="flex-1">
-          <Label htmlFor="firstName" value="Passenger first name" />
+          <Label htmlFor="firstName" value="Nombre" />
           <TextInput
             id="firstName"
-            placeholder="Please, write your first name"
+            placeholder="John"
             required
             type="text"
             theme={formTheme}
@@ -61,10 +61,10 @@ export const PassengerForm = () => {
         </fieldset>
 
         <fieldset id="lastName" className="flex-1">
-          <Label htmlFor="lastName" value="Passenger last name" />
+          <Label htmlFor="lastName" value="Apellido" />
           <TextInput
             id="lastName"
-            placeholder="Please, write your last name"
+            placeholder="Doe"
             required
             type="text"
             theme={formTheme}
@@ -73,8 +73,8 @@ export const PassengerForm = () => {
       </div>
 
       <PhoneInput
-        placeholder="Enter phone number"
-        className="rounded-lg p-4 border-2  outline-none h-12"
+        placeholder="412-209874"
+        className="rounded-lg p-4 border-2  outline-none h-12 placeholder:text-sm bg-[#f9fafb]"
         value={formValues.phone}
         defaultCountry="VE"
         onChange={(phone) =>
@@ -83,14 +83,14 @@ export const PassengerForm = () => {
       />
 
       <fieldset id="countries">
-        <Label htmlFor="countries" value="Countries" />
-        <Select id="countries" placeholder="Select a country" required>
+        <Label htmlFor="countries" value="Pais" />
+        <Select id="countries" placeholder="Selecciona el pais" required>
           <option>Venezuela</option>
         </Select>
       </fieldset>
 
       <fieldset id="DoB">
-        <Label htmlFor="DoB" value="Date of birth" />
+        <Label htmlFor="DoB" value="Fecha de nacimiento" />
         <section className="flex gap-2 items-center w-full">
           <TextInput
             type="number"
@@ -127,7 +127,7 @@ export const PassengerForm = () => {
           theme={{
             color: {
               primary:
-                "bg-secondary text-white hover:bg-primary-strong focus:bg-primary-strong ring-primary",
+                "border border-secondary text-secondary bg-secondary/10 hover:bg-primary-strong focus:bg-primary-strong ring-primary",
             },
           }}
           type="submit"

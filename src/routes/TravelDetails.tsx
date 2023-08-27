@@ -39,13 +39,13 @@ export const TravelDetails = () => {
         <section className="mw-[90%] mx-auto p-5">
           <Card>
             <main className="flex flex-row gap-5">
-              <aside className="basis-1/2 text-justify">
-                <div className="flex items-center gap-5">
+              <aside className="basis-1/2 text-balance">
+                <div className="flex items-center gap-2 mb-2">
                   <AiFillCheckCircle className="text-primary text-sm font-medium" />
                   <h4 className="text-primary text-sm font-medium">Salida</h4>
                 </div>
 
-                <p>
+                <p className="text-sm">
                   {initialDate
                     .toLocaleDateString("es-ES", {
                       weekday: "long",
@@ -61,18 +61,18 @@ export const TravelDetails = () => {
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(" ")}
                 </p>
-                <p>{trip.city}</p>
+                <p className="text-sm">{trip.city}</p>
               </aside>
 
-              <div className="w-1 bg-primary max-h-full h-24"></div>
+              <div className="w-[2px] bg-primary max-h-full h-24"></div>
 
-              <aside className="basis-1/2 text-justify">
-                <div className="flex items-center gap-5">
+              <aside className="basis-1/2 text-balance">
+                <div className="flex items-center gap-2 mb-2">
                   <AiFillCheckCircle className="text-primary text-sm font-medium" />
-                  <h4 className="text-primary text-sm font-medium">LLegada</h4>
+                  <h4 className="text-primary text-sm font-medium">Llegada</h4>
                 </div>
 
-                <p>
+                <p className="text-sm">
                   {finalDate
                     .toLocaleDateString("es-ES", {
                       weekday: "long",
@@ -88,22 +88,22 @@ export const TravelDetails = () => {
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(" ")}
                 </p>
-                <p>{trip.destination}</p>
+                <p className="text-sm">{trip.destination}</p>
               </aside>
             </main>
           </Card>
 
-          <Card className="mt-10">
+          <Card className="mt-4">
             <h3 className="font-bold">Terminos de tarifa</h3>
             <p className="text-sm">{trip.description}</p>
           </Card>
 
-          <Card className="mt-10">
+          <Card className="mt-4">
             <div>
-              <div className="flex items-center justify-between">
-                <div>
-                  <span>tickets</span> ({trip.availableSeats}{" "}
-                  {trip.availableSeats > 1 ? "pasajeros" : "pasajero"})
+              <div className="flex items-center justify-between border-b pb-4">
+                <div className="text-sm">
+                  Tickets <span className="text-xs">({trip.availableSeats}{" "}
+                  {trip.availableSeats > 1 ? "pasajeros" : "pasajero"})</span>
                 </div>
                 <span>${trip.price}</span>
               </div>
