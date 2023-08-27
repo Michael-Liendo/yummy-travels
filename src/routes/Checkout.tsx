@@ -16,7 +16,8 @@ export default function Checkout() {
   const [total, setTotal] = useState(2.88);
   const props = { openModal, setOpenModal };
 
-  function handleFieldSet(e: unknown) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function handleFieldSet(e: any) {
     setPaymentMethod(e?.target?.value);
   }
 

@@ -1,10 +1,9 @@
-import { Button, Card } from "flowbite-react";
+import { Card } from "flowbite-react";
 import { AppLayout } from "../layout";
-import { AiOutlineLeft, AiFillCheckCircle } from "react-icons/ai";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { HeaderComponent } from "../components";
-import { searchData } from "./HomePage";
 
 export const TravelDetails = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ export const TravelDetails = () => {
 
   useEffect(() => {
     setTrip({
-      id: 1,
+      _id: '1',
       type: "flight",
       price: 200,
       description: "Round-trip flight to Paris",
@@ -119,7 +118,7 @@ export const TravelDetails = () => {
           </Card>
           <div className="mt-10 flex justify-center">
             <button
-              onClick={() => navigate(`/passenger/${trip.id}`)}
+              onClick={() => navigate(`/passenger/${trip._id}`)}
               type="button"
               className="text-white w-full bg-primary  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
             >
